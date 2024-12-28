@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,9 @@ namespace JsonRpcTester.ViewModels
 {
     public class MainWindowViewModel
     {
+        public ReactiveProperty<string> JsonRpcMethod { get; }
+            = new ReactiveProperty<string>();
+
         public ReactiveProperty<string> SendMessage { get; }
             = new ReactiveProperty<string>();
 
@@ -30,17 +34,24 @@ namespace JsonRpcTester.ViewModels
 
         private async Task ExeSendCommandAsync()
         {
-            using (var client = new TcpClient())
+            try
             {
-                await client.ConnectAsync("localhost", 5000);
-                using (var stream = client.GetStream())
+                using (var client = new TcpClient())
                 {
-                    var jsonRpc = new JsonRpc(stream, stream);
-                    jsonRpc.StartListening();
-
-                    var result = await jsonRpc.InvokeAsync<string>("Message", SendMessage.Value);
-                    Console.WriteLine($"Result: {result}");
+                    await client.ConnectAsync("localhost", 5000);
+                    using (var stream = client.GetStream())
+                    {
+                        var jsonRpc = new JsonRpc(stream, stream);
+                        jsonRpc.StartListening();
+                        
+                        var result = await jsonRpc.InvokeAsync<string>(JsonRpcMethod.Value, SendMessage.Value);
+                        Console.WriteLine($"Result: {result}");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -13,6 +13,9 @@
     </Window.DataContext>
     
     <StackPanel>
+        <TextBlock Text="JsonRpcMethod"/>
+        <TextBox Text="{Binding JsonRpcMethod.Value}"/>
+        <TextBlock Text="メッセージ"/>
         <TextBox Text="{Binding SendMessage.Value}"/>
         <Button Content="送信" Command="{Binding SendCommand}"/>
     </StackPanel>
