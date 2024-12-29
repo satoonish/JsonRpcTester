@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using JsonRpcTester.Core;
 
 namespace JsonRpcTester.Server
 {
@@ -39,6 +40,16 @@ namespace JsonRpcTester.Server
         {
             Console.WriteLine($"ClientMessage: {message}");
             return "Success";
+        }
+
+        [JsonRpcMethod("GetWeathers")]
+        public Weathers GetWeathers(string city)
+        {
+            if (city == "Tokyo")
+            {
+                return new Weathers(city, 22, 30, "曇り");
+            }
+            return null;
         }
     }
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRpcTester", "src\JsonRp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRpcTester.Server", "src\JsonRpcTester.Server\JsonRpcTester.Server.csproj", "{19075105-CCCF-45CA-9E91-5EFEE81D4329}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonRpcTester.Core", "src\JsonRpcTester.Core\JsonRpcTester.Core.csproj", "{120E911A-6244-4DB5-9917-7C4C002B6E0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{19075105-CCCF-45CA-9E91-5EFEE81D4329}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19075105-CCCF-45CA-9E91-5EFEE81D4329}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19075105-CCCF-45CA-9E91-5EFEE81D4329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120E911A-6244-4DB5-9917-7C4C002B6E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120E911A-6244-4DB5-9917-7C4C002B6E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120E911A-6244-4DB5-9917-7C4C002B6E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120E911A-6244-4DB5-9917-7C4C002B6E0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

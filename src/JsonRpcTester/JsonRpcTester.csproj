@@ -200,6 +200,12 @@
     <Analyzer Include="..\..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\analyzers\vb\Microsoft.VisualStudio.Threading.Analyzers.VisualBasic.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JsonRpcTester.Core\JsonRpcTester.Core.csproj">
+      <Project>{120e911a-6244-4db5-9917-7c4c002b6e0f}</Project>
+      <Name>JsonRpcTester.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets" Condition="Exists('..\..\packages\Microsoft.VisualStudio.Threading.Analyzers.17.10.48\build\Microsoft.VisualStudio.Threading.Analyzers.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

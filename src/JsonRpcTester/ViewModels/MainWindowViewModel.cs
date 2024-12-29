@@ -1,4 +1,5 @@
-﻿using Reactive.Bindings;
+﻿using JsonRpcTester.Core;
+using Reactive.Bindings;
 using StreamJsonRpc;
 using System;
 using System.Collections.Generic;
@@ -44,8 +45,9 @@ namespace JsonRpcTester.ViewModels
                         var jsonRpc = new JsonRpc(stream, stream);
                         jsonRpc.StartListening();
                         
-                        var result = await jsonRpc.InvokeAsync<string>(JsonRpcMethod.Value, SendMessage.Value);
+                        var result = await jsonRpc.InvokeAsync<object>(JsonRpcMethod.Value, SendMessage.Value);
                         Console.WriteLine($"Result: {result}");
+                        jsonRpc.Dispose();
                     }
                 }
             }
