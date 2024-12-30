@@ -18,5 +18,10 @@
         <TextBlock Text="メッセージ"/>
         <TextBox Text="{Binding SendMessage.Value}"/>
         <Button Content="送信" Command="{Binding SendCommand}"/>
+        <TextBlock Text="ログ"/>
+        <TextBlock Text="{Binding Log.Value}"
+                   Height="200"
+                   Background="#222"
+                   Foreground="#ccc"/>
     </StackPanel>
 </Window>

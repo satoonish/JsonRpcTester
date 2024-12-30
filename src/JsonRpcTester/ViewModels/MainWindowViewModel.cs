@@ -20,6 +20,9 @@ namespace JsonRpcTester.ViewModels
         public ReactiveProperty<string> SendMessage { get; }
             = new ReactiveProperty<string>();
 
+        public ReactiveProperty<string> Log { get; }
+            = new ReactiveProperty<string>();
+
         public AsyncReactiveCommand SendCommand { get; }
             = new AsyncReactiveCommand();
 
@@ -47,6 +50,7 @@ namespace JsonRpcTester.ViewModels
                         
                         var result = await jsonRpc.InvokeAsync<object>(JsonRpcMethod.Value, SendMessage.Value);
                         Console.WriteLine($"Result: {result}");
+                        Log.Value = $"Result: {result}";
                         jsonRpc.Dispose();
                     }
                 }
@@ -54,6 +58,7 @@ namespace JsonRpcTester.ViewModels
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Value = "Failed";
             }
         }
     }
