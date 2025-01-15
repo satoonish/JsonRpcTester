@@ -40,20 +40,9 @@ namespace JsonRpcTester.ViewModels
         {
             try
             {
-                using (var client = new TcpClient())
-                {
-                    await client.ConnectAsync("localhost", 5000);
-                    using (var stream = client.GetStream())
-                    {
-                        var jsonRpc = new JsonRpc(stream, stream);
-                        jsonRpc.StartListening();
-                        
-                        var result = await jsonRpc.InvokeAsync<object>(JsonRpcMethod.Value, SendMessage.Value);
-                        Console.WriteLine($"Result: {result}");
-                        Log.Value = $"Result: {result}";
-                        jsonRpc.Dispose();
-                    }
-                }
+                var result = await JsonRpcClient.ExecuteAsync(JsonRpcMethod.Value, SendMessage.Value);
+                Console.WriteLine($"Result: {result}");
+                Log.Value = $"Result: {result}";
             }
             catch (Exception ex)
             {
